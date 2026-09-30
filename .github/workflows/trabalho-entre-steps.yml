@@ -21,8 +21,3 @@ jobs:
       - name: Le conteudo do arquivo  
         run: cat mensagem.txt
 
-
-
-
-
-
