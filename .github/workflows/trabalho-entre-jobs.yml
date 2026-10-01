@@ -41,7 +41,7 @@ jobs:
         run: ls -lha
 
       - name: Acessa arquivo mensagem
-        run: cat mensagem.tx
+        run: cat mensagem.txt
 
 
 
