@@ -1,0 +1,26 @@
+name: desafio-um
+
+on:
+  workflow_dispatch:
+    inputs:
+      imagem:
+        description: 'Nome e tag da imagem Docker (ex: alpine:latest)'
+        required: true
+        default: 'alpine:latest'
+
+jobs:
+  giropops:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar a imagem Docker
+        run: docker pull ${{ github.event.inputs.imagem }}
+
+      - name: Listar imagens Docker disponíveis
+        run: docker images
+
+      - name: Análise de vulnerabilidades com Docker Scout
+        uses: docker/scout-action@v1
+        continue-on-error: true
+        with:
+          command: quickview,cves
+          image: ${{ github.event.inputs.imagem }}
